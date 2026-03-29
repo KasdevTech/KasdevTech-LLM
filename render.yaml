@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: kasdevtech-llm
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    envVars:
+      - key: APP_API_KEY
+        sync: false
+      - key: UPSTREAM_PROVIDER
+        value: ollama
+      - key: UPSTREAM_BASE_URL
+        sync: false
+      - key: DEFAULT_MODEL
+        value: llama3.2:3b
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: UPSTREAM_API_KEY
+        sync: false
