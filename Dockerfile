@@ -5,8 +5,15 @@ ENV PYTHONUNBUFFERED=1 \
     DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
     ca-certificates \
+    cmake \
     curl \
+    gcc \
+    g++ \
+    git \
+    ninja-build \
+    pkg-config \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
