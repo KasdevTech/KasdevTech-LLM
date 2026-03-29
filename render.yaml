@@ -1,21 +1,25 @@
 services:
   - type: web
     name: kasdevtech-llm
-    runtime: python
+    runtime: docker
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     autoDeploy: true
     envVars:
-      - key: APP_API_KEY
+      - key: MODEL_URL
+        value: https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf
+      - key: MODEL_FILE
+        value: model.gguf
+      - key: MODEL_ALIAS
+        value: qwen2.5-0.5b
+      - key: CHAT_FORMAT
+        value: chatml
+      - key: N_CTX
+        value: "4096"
+      - key: N_THREADS
+        value: "4"
+      - key: N_BATCH
+        value: "256"
+      - key: API_KEY
         sync: false
-      - key: UPSTREAM_PROVIDER
-        value: ollama
-      - key: UPSTREAM_BASE_URL
-        sync: false
-      - key: DEFAULT_MODEL
-        value: llama3.2:3b
-      - key: ALLOWED_ORIGINS
-        value: "*"
-      - key: UPSTREAM_API_KEY
+      - key: HF_TOKEN
         sync: false
