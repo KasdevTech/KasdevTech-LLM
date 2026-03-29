@@ -56,7 +56,7 @@ ARGS=(
   --host "${HOST}"
   --port "${PORT}"
   --model "${MODEL_PATH}"
-  --model-alias "${MODEL_ALIAS}"
+  --model_alias "${MODEL_ALIAS}"
   --chat_format "${CHAT_FORMAT}"
   --n_ctx "${N_CTX}"
   --n_threads "${N_THREADS}"
